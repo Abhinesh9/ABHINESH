@@ -1,0 +1,726 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaushalya Buildtech - Structural Engineering Experts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%231e3c72" width="1200" height="600"/><path fill="%232a5298" d="M0 300 Q300 200 600 300 T1200 300 V600 H0 Z"/><circle fill="%23ffd700" cx="200" cy="150" r="30"/><circle fill="%23ffd700" cx="1000" cy="100" r="25"/></svg>');
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ffd700;
+            color: #1e3c72;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,215,0,0.4);
+        }
+
+        /* Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1e3c72;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid #ffd700;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            overflow-x: hidden;
+        }
+
+        .projects-grid .project-card {
+            min-width: 300px;
+        }
+
+        .project-card {
+            position: relative;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-card img {
+            cursor: pointer;
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.95);
+            animation: fadeIn 0.3s;
+        }
+
+        .lightbox-content {
+            position: relative;
+            margin: auto;
+            max-width: 90%;
+            max-height: 90%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #ffd700;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.95);
+            animation: fadeIn 0.3s;
+        }
+
+        .lightbox-content {
+            position: relative;
+            margin: auto;
+            max-width: 90%;
+            max-height: 90%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #ffd700;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* Contact */
+        .contact {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            color: #ffd700;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #ffd700;
+            width: 30px;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.9);
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">KAUSHALYA BUILDTECH</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content fade-in-up">
+            <h1>Engineering Excellence</h1>
+            <p>Specializing in RCC and Steel Structure Design. Building the future with precision, strength, and innovation.</p>
+            <a href="#contact" class="cta-button">Get Quote</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="container">
+        <h2 class="fade-in-up">Our Core Services</h2>
+        <div class="services-grid">
+            <div class="service-card fade-in-up">
+                <div class="service-icon">🏗️</div>
+                <h3>RCC Structure Design</h3>
+                <p>Expert design of Reinforced Concrete Structures for residential, commercial, and industrial buildings with optimal material usage and safety.</p>
+            </div>
+            <div class="service-card fade-in-up">
+                <div class="service-icon">🔩</div>
+                <h3>Steel Structure Design</h3>
+                <p>Advanced Steel Structure solutions including industrial sheds, high-rise buildings, bridges, and complex frameworks.</p>
+            </div>
+            <div class="service-card fade-in-up">
+                <div class="service-icon">📐</div>
+                <h3>Structural Analysis</h3>
+                <p>Comprehensive structural analysis using latest software - ETABS, STAAD.Pro, SAP2000 for earthquake, wind, and dynamic loading.</p>
+            </div>
+            <div class="service-card fade-in-up">
+                <div class="service-icon">⚙️</div>
+                <h3>Detailing & Detailing</h3>
+                <p>Complete structural drawings, bar bending schedules, connection details, and fabrication drawings.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container" style="background: #f8f9fa;">
+        <h2 class="fade-in-up">Why Choose Kaushalya Buildtech?</h2>
+        <div class="about-content">
+            <div class="about-text fade-in-up">
+                <p>With over 15 years of experience in structural engineering, we deliver innovative and reliable solutions for complex structural challenges. Our team of qualified engineers uses state-of-the-art software and follows international codes and standards.</p>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        Projects Completed
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">15+</span>
+                        Years Experience
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        Client Satisfaction
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        Happy Clients
+                    </div>
+                </div>
+            </div>
+            <div class="fade-in-up" style="text-align: center;">
+                <div style="background: linear-gradient(135deg, #1e3c72, #2a5298); height: 300px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    Certified Engineers | Latest Software | IS Codes Compliant
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2 class="fade-in-up">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card fade-in-up">
+                <img src="./project1.jpg" alt="High-rise Residential Tower" loading="lazy">
+                <div class="project-overlay">
+                    <h3>High-rise Residential Tower</h3>
+                    <p>45 Storey RCC Structure</p>
+                </div>
+            </div>
+            <div class="project-card fade-in-up">
+                <img src="./project2.jpg" alt="Industrial Steel Shed" loading="lazy">
+                <div class="project-overlay">
+                    <h3>Industrial Steel Shed</h3>
+                    <p>10,000 sqm Steel Structure</p>
+                </div>
+            </div>
+            <div class="project-card fade-in-up">
+                <img src="./project3.jpg" alt="Commercial Complex" loading="lazy">
+                <div class="project-overlay">
+                    <h3>Commercial Complex</h3>
+                    <p>Mixed-use RCC Building</p>
+                </div>
+            </div>
+            <div class="project-card fade-in-up">
+                <img src="./project4.jpg" alt="Industrial Facility" loading="lazy">
+                <div class="project-overlay">
+                    <h3>Industrial Facility</h3>
+                    <p>Steel Structure Design</p>
+                </div>
+            </div>
+            <div class="project-card fade-in-up">
+                <img src="./project5.jpg" alt="Bridge Project" loading="lazy">
+                <div class="project-overlay">
+                    <h3>Bridge Project</h3>
+                    <p>Structural Analysis</p>
+                </div>
+            </div>
+            <div class="project-card fade-in-up">
+                <img src="./project6.jpg" alt="High-rise Office" loading="lazy">
+                <div class="project-overlay">
+                    <h3>High-rise Office</h3>
+                    <p>RCC Detailing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="container" style="background: #f8f9fa;">
+        <h2 class="fade-in-up">Our Team</h2>
+        <div class="projects-grid">
+            <div class="team-card fade-in-up" style="height: 350px; text-align: center; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2rem;">
+                <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><circle cx='60' cy='60' r='60' fill='%231e3c72'/><circle cx='60' cy='50' r='25' fill='%23ffd700'/><text x='60' y='55' font-size='20' fill='%231e3c72' text-anchor='middle' font-weight='bold'>KJ</text><circle cx='45' cy='75' r='8' fill='%232a5298'/><circle cx='75' cy='75' r='8' fill='%232a5298'/></svg>" alt="Kaushal Jadhav" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 style="color: #1e3c72; margin-bottom: 0.5rem;">Kaushal Jadhav</h3>
+                <p style="color: #ffd700; font-weight: bold; margin-bottom: 1rem; font-size: 1.1rem;">Founder & Lead Engineer</p>
+                <p>15+ years experience in RCC & Steel structures. Expert in ETABS, STAAD.Pro. IS 456 & IS 800 compliant designs.</p>
+            </div>
+            <div class="team-card fade-in-up" style="height: 350px; text-align: center; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2rem;">
+                <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><circle cx='60' cy='60' r='60' fill='%232a5298'/><circle cx='60' cy='50' r='25' fill='%23ffd700'/><text x='60' y='55' font-size='18' fill='%231e3c72' text-anchor='middle' font-weight='bold'>SP</text><circle cx='45' cy='75' r='8' fill='%23ffd700'/><circle cx='75' cy='75' r='8' fill='%23ffd700'/></svg>" alt="Senior Engineer" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 style="color: #1e3c72; margin-bottom: 0.5rem;">Senior Project Engineer</h3>
+                <p style="color: #ffd700; font-weight: bold; margin-bottom: 1rem; font-size: 1.1rem;">Steel Structures Specialist</p>
+                <p>Specializes in industrial sheds, high-rise steel frames, and seismic analysis using modern software tools.</p>
+            </div>
+            <div class="team-card fade-in-up" style="height: 350px; text-align: center; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2rem;">
+                <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><circle cx='60' cy='60' r='60' fill='%23ffd700'/><circle cx='60' cy='45' r='22' fill='%231e3c72'/><text x='60' y='52' font-size='18' fill='white' text-anchor='middle' font-weight='bold'>RD</text><circle cx='40' cy='72' r='7' fill='%232a5298'/><circle cx='80' cy='72' r='7' fill='%232a5298'/></svg>" alt="Detailing Expert" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 style="color: #1e3c72; margin-bottom: 0.5rem;">Detailing Expert</h3>
+                <p style="color: #ffd700; font-weight: bold; margin-bottom: 1rem; font-size: 1.1rem;">CAD & Detailing</p>
+                <p>Responsible for structural drawings, bar bending schedules, and fabrication details with AutoCAD expertise.</p>
+            </div>
+            <div class="team-card fade-in-up" style="height: 350px; text-align: center; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 2rem;">
+                <div style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><circle cx='60' cy='60' r='60' fill='%231e3c72'/><circle cx='60' cy='48' r='24' fill='%232a5298'/><text x='60' y='55' font-size='20' fill='white' text-anchor='middle' font-weight='bold'>AS</text><circle cx='42' cy='73' r='6' fill='%23ffd700'/><circle cx='78' cy='73' r='6' fill='%23ffd700'/></svg>" alt="Analysis Specialist" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 style="color: #1e3c72; margin-bottom: 0.5rem;">Analysis Specialist</h3>
+                <p style="color: #ffd700; font-weight: bold; margin-bottom: 1rem; font-size: 1.1rem;">Dynamic Analysis</p>
+                <p>Expert in earthquake and wind load analysis using SAP2000 and advanced finite element methods.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 3rem;">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info fade-in-up">
+                    <h3>Ready to Start Your Project?</h3>
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <div>
+                            <strong>kaushaljadhav15@gamil.com</strong><br>
+                            contactkaushaljadhav15@gmail.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i>📞</i>
+                        <div>
+                            <strong>+91 7875774886</strong><br>
+                            +91 7875774886
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <div>
+                            <strong>Kaushalya Buildtech</strong><br>
+                            cidco, Nashik City<br>
+                            India - 422010
+                        </div>
+                    </div>
+                </div>
+<form netlify data-netlify="true" name="contact" id="contactForm" class="contact-form fade-in-up">
+    <input type="hidden" name="form-name" value="contact">
+                    <div class="form-group">
+<input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+<input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+<input type="tel" id="phone" name="phone" placeholder="Your Phone">
+                    </div>
+                    <div class="form-group">
+<textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%; margin-top: 1rem;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Kaushalya Buildtech. All rights reserved. | Structural Engineering Excellence</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+// Static hosting form submission (Netlify/GitHub Pages)
+// Toggle useBackend = true for local backend testing
+const useBackend = false; // Set to true if running local server
+
+        contactForm.addEventListener('submit', async function(e) {
+            if (useBackend) {
+                // Local backend (original)
+                e.preventDefault();
+                const formDataObj = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    message: document.getElementById('message').value
+                };
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                try {
+                    const response = await fetch('http://localhost:5500/api/contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formDataObj)
+                    });
+                    const result = await response.json();
+                    if (result.success) {
+                        alert('Thank you! We will contact you soon.');
+                        contactForm.reset();
+                    } else {
+                        alert('Error: ' + (result.error || 'Something went wrong'));
+                    }
+                } catch (error) {
+                    alert('Backend not running. Use Netlify/GitHub Pages form instead.');
+                } finally {
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.disabled = false;
+                }
+            } else {
+                // Netlify / Formspree fallback (no preventDefault needed)
+                // For GitHub Pages: Replace action="https://formspree.io/f/YOUR_ID" and signup at formspree.io
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                setTimeout(() => {
+                    alert('Form submitted! Check your email service (Netlify dashboard or Formspree).');
+                    submitBtn.textContent = 'Send Message';
+                    submitBtn.disabled = false;
+                }, 1000);
+            }
+        });
+
